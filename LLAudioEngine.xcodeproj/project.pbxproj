@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2EB84DAC1DC6BBF20017C1A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB84DAB1DC6BBF20017C1A1 /* Foundation.framework */; };
+		2EB84DE11DC6BDF30017C1A1 /* LLAudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */; };
+		2EB84DE21DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DD51DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.cpp */; };
+		2EB84DE31DC6BDF30017C1A1 /* LLAudioSessionObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DD81DC6BDF30017C1A1 /* LLAudioSessionObserver.mm */; };
+		2EB84DE41DC6BDF30017C1A1 /* LLAudioSessionUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DDA1DC6BDF30017C1A1 /* LLAudioSessionUtil.mm */; };
+		2EB84DE51DC6BDF30017C1A1 /* LLBackgroundMusic.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DDC1DC6BDF30017C1A1 /* LLBackgroundMusic.mm */; };
+		2EB84DE61DC6BDF30017C1A1 /* LLSoundCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DDE1DC6BDF30017C1A1 /* LLSoundCache.mm */; };
+		2EB84DE71DC6BDF30017C1A1 /* LLSoundEffect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DE01DC6BDF30017C1A1 /* LLSoundEffect.mm */; };
+		2EB84DED1DC76F850017C1A1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB84DEB1DC76F850017C1A1 /* AudioToolbox.framework */; };
+		2EB84DF01DC770630017C1A1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB84DEF1DC770630017C1A1 /* AVFoundation.framework */; };
+		2EB84DF21DC770D70017C1A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB84DF11DC770D70017C1A1 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2EB84DA61DC6BBF20017C1A1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2EB84DA81DC6BBF20017C1A1 /* libLLAudioEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLLAudioEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB84DAB1DC6BBF20017C1A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2EB84DAF1DC6BBF20017C1A1 /* LLAudioEngine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LLAudioEngine-Prefix.pch"; sourceTree = "<group>"; };
+		2EB84DB91DC6BBF20017C1A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2EB84DBC1DC6BBF20017C1A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		2EB84DD11DC6BDF30017C1A1 /* LLAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudio.h; sourceTree = "<group>"; };
+		2EB84DD21DC6BDF30017C1A1 /* LLAudioAssertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudioAssertion.h; sourceTree = "<group>"; };
+		2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LLAudioEngine.cpp; sourceTree = "<group>"; };
+		2EB84DD41DC6BDF30017C1A1 /* LLAudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudioEngine.h; sourceTree = "<group>"; };
+		2EB84DD51DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LLAudioEngineImpl_ios.cpp; sourceTree = "<group>"; };
+		2EB84DD61DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudioEngineImpl_ios.h; sourceTree = "<group>"; };
+		2EB84DD71DC6BDF30017C1A1 /* LLAudioSessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudioSessionObserver.h; sourceTree = "<group>"; };
+		2EB84DD81DC6BDF30017C1A1 /* LLAudioSessionObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LLAudioSessionObserver.mm; sourceTree = "<group>"; };
+		2EB84DD91DC6BDF30017C1A1 /* LLAudioSessionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAudioSessionUtil.h; sourceTree = "<group>"; };
+		2EB84DDA1DC6BDF30017C1A1 /* LLAudioSessionUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LLAudioSessionUtil.mm; sourceTree = "<group>"; };
+		2EB84DDB1DC6BDF30017C1A1 /* LLBackgroundMusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLBackgroundMusic.h; sourceTree = "<group>"; };
+		2EB84DDC1DC6BDF30017C1A1 /* LLBackgroundMusic.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LLBackgroundMusic.mm; sourceTree = "<group>"; };
+		2EB84DDD1DC6BDF30017C1A1 /* LLSoundCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSoundCache.h; sourceTree = "<group>"; };
+		2EB84DDE1DC6BDF30017C1A1 /* LLSoundCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LLSoundCache.mm; sourceTree = "<group>"; };
+		2EB84DDF1DC6BDF30017C1A1 /* LLSoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSoundEffect.h; sourceTree = "<group>"; };
+		2EB84DE01DC6BDF30017C1A1 /* LLSoundEffect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LLSoundEffect.mm; sourceTree = "<group>"; };
+		2EB84DE91DC76F6B0017C1A1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		2EB84DEB1DC76F850017C1A1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2EB84DEC1DC76F850017C1A1 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		2EB84DEF1DC770630017C1A1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2EB84DF11DC770D70017C1A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EB84DA51DC6BBF20017C1A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EB84DF21DC770D70017C1A1 /* UIKit.framework in Frameworks */,
+				2EB84DAC1DC6BBF20017C1A1 /* Foundation.framework in Frameworks */,
+				2EB84DF01DC770630017C1A1 /* AVFoundation.framework in Frameworks */,
+				2EB84DED1DC76F850017C1A1 /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EB84D9F1DC6BBF20017C1A1 = {
+			isa = PBXGroup;
+			children = (
+				2EB84DAD1DC6BBF20017C1A1 /* LLAudioEngine */,
+				2EB84DAA1DC6BBF20017C1A1 /* Frameworks */,
+				2EB84DA91DC6BBF20017C1A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2EB84DA91DC6BBF20017C1A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DA81DC6BBF20017C1A1 /* libLLAudioEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB84DAA1DC6BBF20017C1A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DF11DC770D70017C1A1 /* UIKit.framework */,
+				2EB84DEF1DC770630017C1A1 /* AVFoundation.framework */,
+				2EB84DEB1DC76F850017C1A1 /* AudioToolbox.framework */,
+				2EB84DEC1DC76F850017C1A1 /* AudioUnit.framework */,
+				2EB84DE91DC76F6B0017C1A1 /* CoreAudio.framework */,
+				2EB84DAB1DC6BBF20017C1A1 /* Foundation.framework */,
+				2EB84DB91DC6BBF20017C1A1 /* XCTest.framework */,
+				2EB84DBC1DC6BBF20017C1A1 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EB84DAD1DC6BBF20017C1A1 /* LLAudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DE81DC6BDFB0017C1A1 /* ios */,
+				2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */,
+				2EB84DD41DC6BDF30017C1A1 /* LLAudioEngine.h */,
+				2EB84DAE1DC6BBF20017C1A1 /* Supporting Files */,
+			);
+			path = LLAudioEngine;
+			sourceTree = "<group>";
+		};
+		2EB84DAE1DC6BBF20017C1A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DAF1DC6BBF20017C1A1 /* LLAudioEngine-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2EB84DE81DC6BDFB0017C1A1 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DD11DC6BDF30017C1A1 /* LLAudio.h */,
+				2EB84DD21DC6BDF30017C1A1 /* LLAudioAssertion.h */,
+				2EB84DD51DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.cpp */,
+				2EB84DD61DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.h */,
+				2EB84DD71DC6BDF30017C1A1 /* LLAudioSessionObserver.h */,
+				2EB84DD81DC6BDF30017C1A1 /* LLAudioSessionObserver.mm */,
+				2EB84DD91DC6BDF30017C1A1 /* LLAudioSessionUtil.h */,
+				2EB84DDA1DC6BDF30017C1A1 /* LLAudioSessionUtil.mm */,
+				2EB84DDB1DC6BDF30017C1A1 /* LLBackgroundMusic.h */,
+				2EB84DDC1DC6BDF30017C1A1 /* LLBackgroundMusic.mm */,
+				2EB84DDD1DC6BDF30017C1A1 /* LLSoundCache.h */,
+				2EB84DDE1DC6BDF30017C1A1 /* LLSoundCache.mm */,
+				2EB84DDF1DC6BDF30017C1A1 /* LLSoundEffect.h */,
+				2EB84DE01DC6BDF30017C1A1 /* LLSoundEffect.mm */,
+			);
+			name = ios;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EB84DA71DC6BBF20017C1A1 /* LLAudioEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EB84DCB1DC6BBF20017C1A1 /* Build configuration list for PBXNativeTarget "LLAudioEngine" */;
+			buildPhases = (
+				2EB84DA41DC6BBF20017C1A1 /* Sources */,
+				2EB84DA51DC6BBF20017C1A1 /* Frameworks */,
+				2EB84DA61DC6BBF20017C1A1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LLAudioEngine;
+			productName = LLAudioEngine;
+			productReference = 2EB84DA81DC6BBF20017C1A1 /* libLLAudioEngine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EB84DA01DC6BBF20017C1A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = RevLow;
+			};
+			buildConfigurationList = 2EB84DA31DC6BBF20017C1A1 /* Build configuration list for PBXProject "LLAudioEngine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2EB84D9F1DC6BBF20017C1A1;
+			productRefGroup = 2EB84DA91DC6BBF20017C1A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2EB84DA71DC6BBF20017C1A1 /* LLAudioEngine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EB84DA41DC6BBF20017C1A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EB84DE21DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.cpp in Sources */,
+				2EB84DE41DC6BDF30017C1A1 /* LLAudioSessionUtil.mm in Sources */,
+				2EB84DE61DC6BDF30017C1A1 /* LLSoundCache.mm in Sources */,
+				2EB84DE51DC6BDF30017C1A1 /* LLBackgroundMusic.mm in Sources */,
+				2EB84DE71DC6BDF30017C1A1 /* LLSoundEffect.mm in Sources */,
+				2EB84DE31DC6BDF30017C1A1 /* LLAudioSessionObserver.mm in Sources */,
+				2EB84DE11DC6BDF30017C1A1 /* LLAudioEngine.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2EB84DC91DC6BBF20017C1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 arm64 x86_64 i386";
+			};
+			name = Debug;
+		};
+		2EB84DCA1DC6BBF20017C1A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64 x86_64 i386";
+			};
+			name = Release;
+		};
+		2EB84DCC1DC6BBF20017C1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				COMPRESS_PNG_FILES = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/LLAudioEngine.dst;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LLAudioEngine/LLAudioEngine-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = NO;
+				STRIP_STYLE = all;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+			};
+			name = Debug;
+		};
+		2EB84DCD1DC6BBF20017C1A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				COMPRESS_PNG_FILES = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = /tmp/LLAudioEngine.dst;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LLAudioEngine/LLAudioEngine-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = NO;
+				STRIP_STYLE = all;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2EB84DA31DC6BBF20017C1A1 /* Build configuration list for PBXProject "LLAudioEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EB84DC91DC6BBF20017C1A1 /* Debug */,
+				2EB84DCA1DC6BBF20017C1A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EB84DCB1DC6BBF20017C1A1 /* Build configuration list for PBXNativeTarget "LLAudioEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EB84DCC1DC6BBF20017C1A1 /* Debug */,
+				2EB84DCD1DC6BBF20017C1A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2EB84DA01DC6BBF20017C1A1 /* Project object */;
+}

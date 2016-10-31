@@ -1,0 +1,18 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
+#include <memory>
+#include <unordered_map>
+#include <sstream>
+#include <iostream>
+#include <string>
+#include <functional>
+#include <list>
+#include <thread>
