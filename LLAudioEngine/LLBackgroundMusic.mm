@@ -209,6 +209,26 @@ bool LLBackgroundMusic::isPlaying() const
     return _isPlaying;
 }
 
+void LLBackgroundMusic::setVolume(const float& volume)
+{
+    float value = volume;
+    if (volume > 1.0) {
+        value = 1.0;
+    }
+    if (volume < 0.0) {
+        value = 0.0;
+    }
+    AudioQueueSetParameter(_queueRef, kAudioQueueParam_Volume, value);
+}
+
+float LLBackgroundMusic::getVolume() const
+{
+    float value = 0.0f;
+    AudioQueueGetParameter(_queueRef, kAudioQueueParam_Volume, &value);
+
+    return value;
+}
+
 void LLBackgroundMusic::setOnExitCallback(const std::function<void ()>& func)
 {
     callbackFunc = func;

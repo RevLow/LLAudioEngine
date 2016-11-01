@@ -9,6 +9,8 @@
 #include "LLSoundEffect.h"
 #include "LLSoundCache.h"
 
+float LLSoundEffect::volume = 1.0f;
+
 // AudioUnit再生時のコールバック
 OSStatus renderProc(void* inRefCon,
                     AudioUnitRenderActionFlags* ioActionFlags,
@@ -46,8 +48,8 @@ OSStatus renderProc(void* inRefCon,
         else
         {
             // バッファ格納処理
-            *outL++ = buffer[0][currentFrame];
-            *outR++ = buffer[indexR][currentFrame++];
+            *outL++ = buffer[0][currentFrame] * LLSoundEffect::volume;
+            *outR++ = buffer[indexR][currentFrame++] * LLSoundEffect::volume;
         }
     }
     
@@ -114,6 +116,20 @@ Float32 LLSoundEffect::tell() const
 void LLSoundEffect::seek(Float32 millisec)
 {
     
+}
+
+void LLSoundEffect::setVolume(const float& vol)
+{
+    float value = vol;
+    if(vol > 1.0) value = 1.0;
+    if(vol < 0.0) value = 0.0;
+
+    volume = value;
+}
+
+float LLSoundEffect::getVolume()
+{
+    return volume;
 }
 
 void LLSoundEffect::prepareAudioUnit()

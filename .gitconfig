@@ -1,0 +1,2 @@
+git config --local user.name RevLow 
+git config --local user.email rev_low@yahoo.co.jp 

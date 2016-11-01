@@ -29,12 +29,15 @@ public:
     Float32 tell() const;
     void seek(Float32 millisec);
     bool isPlaying() const;
+    static void setVolume(const float& vol);
+    static float getVolume();
 private:
     void prepareAudioUnit();
     AudioUnit _outputUnit;
     SoundEffectData _data;
     bool _playing;
     SInt64 _currentFrame;
+    static float volume;
 };
 
 

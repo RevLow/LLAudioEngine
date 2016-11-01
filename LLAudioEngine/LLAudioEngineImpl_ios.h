@@ -26,10 +26,14 @@ public:
     void seekBackgroundMusic(float millisec);
     float tellBackgroundMusic() const;
     bool isBackgroundMusicPlaying() const;
+    void setBackgroundMusicVolume(const float& volume);
+    float getBackgroundMusicVolume() const;
     void setBackgroundExitCallback(const std::function<void(void)>& func);
     void playEffect(const std::string& fileName);
     void pauseAllEffect();
     void stopAllEffect();
+    void setEffectVolume(const float& vol);
+    float getEffectVolume() const;
     void preloadEffect(const std::string& fileName);
     void unloadEffect(const std::string& fileName);
     void unloadAllEffect();

@@ -73,6 +73,16 @@ bool LLAudioEngine::isBackgroundMusicPlaying() const
     return pImpl->isBackgroundMusicPlaying();
 }
 
+void LLAudioEngine::setBackgroundMusic(const float& volume)
+{
+    pImpl->setBackgroundMusicVolume(volume);
+}
+
+float LLAudioEngine::getBackgroundMusic() const
+{
+    return pImpl->getBackgroundMusicVolume();
+}
+
 void LLAudioEngine::setBackgroundExitCallback(const std::function<void(void)>& func)
 {
     pImpl->setBackgroundExitCallback(func);
@@ -91,6 +101,16 @@ void LLAudioEngine::pauseAllEffect()
 void LLAudioEngine::stopAllEffect()
 {
     pImpl->stopAllEffect();
+}
+
+void LLAudioEngine::setEffectVolume(const float& vol)
+{
+    pImpl->setEffectVolume(vol);
+}
+
+float LLAudioEngine::getEffectVolume() const
+{
+    return pImpl->getEffectVolume();
 }
 
 void LLAudioEngine::preloadEffect(const std::string& fileName)

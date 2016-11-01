@@ -28,6 +28,8 @@ public:
     void setLoop(bool loop);
     bool getLoop() const;
     bool isPlaying() const;
+    void setVolume(const float& volume);
+    float getVolume() const;
 private:
     SInt64 getCurrentPosition() const;
     void setCurrentPosition(SInt64 frame);
