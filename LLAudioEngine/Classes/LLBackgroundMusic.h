@@ -24,12 +24,13 @@ public:
     void pause();
     float tell() const;
     void seek(float millisec);
-    void setOnExitCallback(const std::function<void(void)>& func);
+    //void setOnExitCallback(const std::function<void(void)>& func);
     void setLoop(bool loop);
     bool getLoop() const;
+    bool isFinishing() const;
     bool isPlaying() const;
-    void setVolume(const float& volume);
-    float getVolume() const;
+    static void setVolume(const float& volume);
+    static float getVolume();
 private:
     SInt64 getCurrentPosition() const;
     void setCurrentPosition(SInt64 frame);
@@ -49,7 +50,7 @@ private:
     UInt32 _packetReadCount; // 1バッファに何パケット使うか
     SInt64 _startingPacketCount;
     SInt64 _frameOffset;
-    std::function<void(void)> callbackFunc;
+    static float _volume;
 };
 
 #endif /* defined(__LLAudioEngine__LLBackgroundMusic__) */

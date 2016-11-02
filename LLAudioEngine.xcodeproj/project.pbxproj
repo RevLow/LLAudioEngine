@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2EB84DFB1DC8C7170017C1A1 /* LLAudioEngine.framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2EB84DFC1DC8C7170017C1A1 /* Build configuration list for PBXAggregateTarget "LLAudioEngine.framework" */;
+			buildPhases = (
+				2EB84DFF1DC8C7390017C1A1 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = LLAudioEngine.framework;
+			productName = LLAudioEngine.framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2EB84DAC1DC6BBF20017C1A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB84DAB1DC6BBF20017C1A1 /* Foundation.framework */; };
 		2EB84DE11DC6BDF30017C1A1 /* LLAudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */; };
@@ -59,6 +73,7 @@
 		2EB84DEC1DC76F850017C1A1 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		2EB84DEF1DC770630017C1A1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2EB84DF11DC770D70017C1A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2EB84DFA1DC8C4040017C1A1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,9 +126,9 @@
 		2EB84DAD1DC6BBF20017C1A1 /* LLAudioEngine */ = {
 			isa = PBXGroup;
 			children = (
-				2EB84DE81DC6BDFB0017C1A1 /* ios */,
-				2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */,
-				2EB84DD41DC6BDF30017C1A1 /* LLAudioEngine.h */,
+				2EB84DF81DC8C3CE0017C1A1 /* Resources */,
+				2EB84DF71DC8C2A50017C1A1 /* Classes */,
+				2EB84DF61DC8C25E0017C1A1 /* Headers */,
 				2EB84DAE1DC6BBF20017C1A1 /* Supporting Files */,
 			);
 			path = LLAudioEngine;
@@ -127,7 +142,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2EB84DE81DC6BDFB0017C1A1 /* ios */ = {
+		2EB84DF61DC8C25E0017C1A1 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DD91DC6BDF30017C1A1 /* LLAudioSessionUtil.h */,
+				2EB84DD41DC6BDF30017C1A1 /* LLAudioEngine.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		2EB84DF71DC8C2A50017C1A1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				2EB84DD11DC6BDF30017C1A1 /* LLAudio.h */,
@@ -136,7 +160,6 @@
 				2EB84DD61DC6BDF30017C1A1 /* LLAudioEngineImpl_ios.h */,
 				2EB84DD71DC6BDF30017C1A1 /* LLAudioSessionObserver.h */,
 				2EB84DD81DC6BDF30017C1A1 /* LLAudioSessionObserver.mm */,
-				2EB84DD91DC6BDF30017C1A1 /* LLAudioSessionUtil.h */,
 				2EB84DDA1DC6BDF30017C1A1 /* LLAudioSessionUtil.mm */,
 				2EB84DDB1DC6BDF30017C1A1 /* LLBackgroundMusic.h */,
 				2EB84DDC1DC6BDF30017C1A1 /* LLBackgroundMusic.mm */,
@@ -144,8 +167,17 @@
 				2EB84DDE1DC6BDF30017C1A1 /* LLSoundCache.mm */,
 				2EB84DDF1DC6BDF30017C1A1 /* LLSoundEffect.h */,
 				2EB84DE01DC6BDF30017C1A1 /* LLSoundEffect.mm */,
+				2EB84DD31DC6BDF30017C1A1 /* LLAudioEngine.cpp */,
 			);
-			name = ios;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2EB84DF81DC8C3CE0017C1A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2EB84DFA1DC8C4040017C1A1 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +222,26 @@
 			projectRoot = "";
 			targets = (
 				2EB84DA71DC6BBF20017C1A1 /* LLAudioEngine */,
+				2EB84DFB1DC8C7170017C1A1 /* LLAudioEngine.framework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EB84DFF1DC8C7390017C1A1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# ==============================\n# 変数設定\n# ==============================\nINFOPLIST='LLAudioEngine/Resources/Info.plist'\nFRAMEWORK_NAME=$(/usr/libexec/PlistBuddy -c \"Print CFBundleName\" ${INFOPLIST})\nBUILD_TARGET_NAME=$FRAMEWORK_NAME\nFRAMEWORK_BUILD_CONFIGURATION=\"Release\"\nFRAMEWORK_VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" ${INFOPLIST})\nFRAMEWORK_VERSION=A\nFRAMEWORK_BUILD_PATH=\"Framework\"\nFRAMEWORK_DIR=\"${FRAMEWORK_BUILD_PATH}/${FRAMEWORK_NAME}.framework\"\nPACKAGENAME=\"${FRAMEWORK_NAME}.${FRAMEWORK_VERSION_NUMBER}.zip\"\n\n# ==============================\n# ビルド\n# ==============================\nxcodebuild -configuration ${FRAMEWORK_BUILD_CONFIGURATION} -target ${BUILD_TARGET_NAME} clean\nxcodebuild -configuration ${FRAMEWORK_BUILD_CONFIGURATION} -target ${BUILD_TARGET_NAME} -sdk iphonesimulator${IPHONEOS_DEPLOYMENT_TARGET}\n[ $? != 0 ] && exit 1\nxcodebuild -configuration ${FRAMEWORK_BUILD_CONFIGURATION} -target ${BUILD_TARGET_NAME} -sdk iphoneos\n[ $? != 0 ] && exit 1\n\n# ==============================\n# ディレクトリ作成\n# ==============================\n[ -d \"${FRAMEWORK_BUILD_PATH}\" ] && rm -rf \"${FRAMEWORK_BUILD_PATH}\"\nmkdir -p ${FRAMEWORK_DIR}\nmkdir -p ${FRAMEWORK_DIR}/Versions\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}/Resources\nmkdir -p ${FRAMEWORK_DIR}/Versions/${FRAMEWORK_VERSION}/Headers\nln -s ${FRAMEWORK_VERSION} ${FRAMEWORK_DIR}/Versions/Current\nln -s Versions/Current/Headers ${FRAMEWORK_DIR}/Headers\nln -s Versions/Current/Resources ${FRAMEWORK_DIR}/Resources\nln -s Versions/Current/${FRAMEWORK_NAME} ${FRAMEWORK_DIR}/${FRAMEWORK_NAME}\n\n# ==============================\n# framework作成\n# ==============================\nlipo -create \\\nbuild/${FRAMEWORK_BUILD_CONFIGURATION}-iphoneos/lib${FRAMEWORK_NAME}.a \\\nbuild/${FRAMEWORK_BUILD_CONFIGURATION}-iphonesimulator/lib${FRAMEWORK_NAME}.a \\\n-o \"${FRAMEWORK_DIR}/Versions/Current/${FRAMEWORK_NAME}\"\n\ncp -Rf ${BUILD_TARGET_NAME}/Headers/* ${FRAMEWORK_DIR}/Headers/\ncp ${BUILD_TARGET_NAME}/Resources/* ${FRAMEWORK_DIR}/Resources/\ncp ${INFOPLIST} ${FRAMEWORK_DIR}/Resources/\ncd ${FRAMEWORK_BUILD_PATH}\nchmod -fR 777 \"${FRAMEWORK_NAME}.framework\"\nzip -ry ${PACKAGENAME} $(basename $FRAMEWORK_DIR)";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2EB84DA41DC6BBF20017C1A1 /* Sources */ = {
@@ -244,7 +293,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 arm64 x86_64 i386";
@@ -277,7 +326,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 arm64 x86_64 i386";
@@ -320,6 +369,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DSTROOT = /tmp/LLAudioEngine.dst;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LLAudioEngine/LLAudioEngine-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -333,6 +383,24 @@
 				STRIP_STYLE = all;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 x86_64 i386";
+			};
+			name = Release;
+		};
+		2EB84DFD1DC8C7170017C1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2EB84DFE1DC8C7170017C1A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -353,6 +421,14 @@
 			buildConfigurations = (
 				2EB84DCC1DC6BBF20017C1A1 /* Debug */,
 				2EB84DCD1DC6BBF20017C1A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2EB84DFC1DC8C7170017C1A1 /* Build configuration list for PBXAggregateTarget "LLAudioEngine.framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EB84DFD1DC8C7170017C1A1 /* Debug */,
+				2EB84DFE1DC8C7170017C1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

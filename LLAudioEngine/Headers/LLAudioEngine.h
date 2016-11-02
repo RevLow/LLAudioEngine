@@ -1,24 +1,21 @@
 //
-//  LLAudioEngineImpl.h
+//  LLAudioEngine.h
 //  LLAudioEngine
 //
 //  Created by RevLow on 2016/10/30.
 //
 //
 
-#ifndef __LLAudioEngine__LLAudioEngineImpl__
-#define __LLAudioEngine__LLAudioEngineImpl__
+#ifndef __LLAudioEngine__LLAudioEngine__
+#define __LLAudioEngine__LLAudioEngine__
 
-class LLSoundEffect;
-class LLBackgroundMusic;
+class LLAudioEngineImpl;
 
-class LLAudioEngineImpl
+class LLAudioEngine
 {
+    friend void LLAudioEngineDelFunc(LLAudioEngine* p);
 public:
-    LLAudioEngineImpl();
-    ~LLAudioEngineImpl();
-    const LLAudioEngineImpl& operator=(const LLAudioEngineImpl&)=delete;
-    LLAudioEngineImpl(const LLAudioEngineImpl&)=delete;
+    static std::shared_ptr<LLAudioEngine> getInstance();
     void playBackgroundMusic(const std::string& fileName, bool repeat = false);
     void stopBackgroundMusic();
     void resumeBackgroundMusic();
@@ -26,8 +23,8 @@ public:
     void seekBackgroundMusic(float millisec);
     float tellBackgroundMusic() const;
     bool isBackgroundMusicPlaying() const;
-    void setBackgroundMusicVolume(const float& volume);
-    float getBackgroundMusicVolume() const;
+    void setBackgroundMusic(const float& volume);
+    float getBackgroundMusic() const;
     void setBackgroundExitCallback(const std::function<void(void)>& func);
     void playEffect(const std::string& fileName);
     void pauseAllEffect();
@@ -37,10 +34,13 @@ public:
     void preloadEffect(const std::string& fileName);
     void unloadEffect(const std::string& fileName);
     void unloadAllEffect();
+    const LLAudioEngine& operator=(const LLAudioEngine&) = delete;
+    LLAudioEngine(const LLAudioEngine&) = delete;
 private:
-    void cleanup();
-    std::list<LLSoundEffect*> _effectBuffer;
-    std::unique_ptr<LLBackgroundMusic> _music;
+    LLAudioEngine();
+    ~LLAudioEngine();
+    std::unique_ptr<LLAudioEngineImpl> pImpl;
+    static std::shared_ptr<LLAudioEngine> instance;
 };
 
-#endif /* defined(__LLAudioEngine__LLAudioEngineImpl__) */
+#endif /* defined(__LLAudioEngine__LLAudioEngine__) */

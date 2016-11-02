@@ -1,21 +1,24 @@
 //
-//  LLAudioEngine.h
+//  LLAudioEngineImpl.h
 //  LLAudioEngine
 //
 //  Created by RevLow on 2016/10/30.
 //
 //
 
-#ifndef __LLAudioEngine__LLAudioEngine__
-#define __LLAudioEngine__LLAudioEngine__
+#ifndef __LLAudioEngine__LLAudioEngineImpl__
+#define __LLAudioEngine__LLAudioEngineImpl__
 
-class LLAudioEngineImpl;
+class LLSoundEffect;
+class LLBackgroundMusic;
 
-class LLAudioEngine
+class LLAudioEngineImpl
 {
-    friend void LLAudioEngineDelFunc(LLAudioEngine* p);
 public:
-    static std::shared_ptr<LLAudioEngine> getInstance();
+    LLAudioEngineImpl();
+    ~LLAudioEngineImpl();
+    const LLAudioEngineImpl& operator=(const LLAudioEngineImpl&)=delete;
+    LLAudioEngineImpl(const LLAudioEngineImpl&)=delete;
     void playBackgroundMusic(const std::string& fileName, bool repeat = false);
     void stopBackgroundMusic();
     void resumeBackgroundMusic();
@@ -23,8 +26,8 @@ public:
     void seekBackgroundMusic(float millisec);
     float tellBackgroundMusic() const;
     bool isBackgroundMusicPlaying() const;
-    void setBackgroundMusic(const float& volume);
-    float getBackgroundMusic() const;
+    void setBackgroundMusicVolume(const float& volume);
+    float getBackgroundMusicVolume() const;
     void setBackgroundExitCallback(const std::function<void(void)>& func);
     void playEffect(const std::string& fileName);
     void pauseAllEffect();
@@ -34,14 +37,11 @@ public:
     void preloadEffect(const std::string& fileName);
     void unloadEffect(const std::string& fileName);
     void unloadAllEffect();
-    
-    const LLAudioEngine& operator=(const LLAudioEngine&) = delete;
-    LLAudioEngine(const LLAudioEngine&) = delete;
 private:
-    LLAudioEngine();
-    ~LLAudioEngine();
-    std::unique_ptr<LLAudioEngineImpl> pImpl;
-    static std::shared_ptr<LLAudioEngine> instance;
+    void cleanup();
+    std::vector<LLSoundEffect*> _effectBuffer;
+    std::unique_ptr<LLBackgroundMusic> _music;
+    std::function<void(void)> callbackFunc;
 };
 
-#endif /* defined(__LLAudioEngine__LLAudioEngine__) */
+#endif /* defined(__LLAudioEngine__LLAudioEngineImpl__) */

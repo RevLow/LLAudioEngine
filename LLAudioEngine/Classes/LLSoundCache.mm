@@ -64,6 +64,11 @@ const SoundEffectData LLSoundCache::getFileCache(const std::string& fileName)
 
 void LLSoundCache::loadMem(const std::string& fileName)
 {
+    if (hasFileCache(fileName))
+    {
+        return;
+    }
+    
     ExtAudioFileRef audioRef;
     NSString* nsFilePath = [[NSString alloc] initWithCString:fileName.c_str() encoding:nil];
     CFURLRef urlFilePath = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)nsFilePath, kCFURLPOSIXPathStyle, false);

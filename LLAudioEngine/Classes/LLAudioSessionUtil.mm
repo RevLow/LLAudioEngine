@@ -11,7 +11,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import "LLAudioSessionObserver.h"
 
-#define IOS_HARDWARE_BUFFER_SIZE 256
+#define IOS_HARDWARE_BUFFER_SIZE 128
 
 static LLAudioSessionObserver* observer = [[LLAudioSessionObserver alloc] init];
 

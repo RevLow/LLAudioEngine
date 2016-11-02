@@ -8,6 +8,8 @@
 
 #include "LLBackgroundMusic.h"
 
+float LLBackgroundMusic::_volume = 1.0;
+
 void outputCallback(void* inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer)
 {
     LLBackgroundMusic* bgm = static_cast<LLBackgroundMusic*>(inUserData);
@@ -15,6 +17,10 @@ void outputCallback(void* inUserData, AudioQueueRef inAQ, AudioQueueBufferRef in
     {
         return;
     }
+
+    
+    //ボリュームの設定を更新
+    AudioQueueSetParameter(bgm->_queueRef, kAudioQueueParam_Volume, bgm->_volume);
     
     UInt32 numPacket = bgm->_packetReadCount;
     UInt32 numBytes;
@@ -49,10 +55,6 @@ void outputCallback(void* inUserData, AudioQueueRef inAQ, AudioQueueBufferRef in
             //ループしないなら終了し、コールバックを呼び出す
             bgm->stop();
             bgm->_isDone = true;
-            if (bgm->callbackFunc != nullptr)
-            {
-                bgm->callbackFunc();
-            }
         }
     }
     
@@ -65,8 +67,7 @@ _isPlaying(false),
 _isLoop(false),
 _packetReadCount(0),
 _startingPacketCount(0),
-_frameOffset(0),
-callbackFunc(nullptr)
+_frameOffset(0)
 {
     openFile(fileName);
     initializeAudioQueue();
@@ -132,7 +133,7 @@ void LLBackgroundMusic::prepareAudioBuffer()
     UInt32 propertySize = sizeof(maxPacketSize);
     AudioFileGetProperty(_data.audioId, kAudioFilePropertyPacketSizeUpperBound, &propertySize, &maxPacketSize);
     
-    _packetReadCount = (_data.audioFormat.mFormatID == kAudioFormatLinearPCM) ? 1024 : calcPacketCount(_data.audioFormat.mFramesPerPacket, 1024);
+    _packetReadCount = (_data.audioFormat.mFormatID == kAudioFormatLinearPCM) ? 1024 : 1; //calcPacketCount(_data.audioFormat.mFramesPerPacket, 1024);
     UInt32 bufferByteSize = _packetReadCount * maxPacketSize;
     
     // AudioQueueBufferの初期化
@@ -204,6 +205,11 @@ bool LLBackgroundMusic::getLoop() const
     return _isLoop;
 }
 
+bool LLBackgroundMusic::isFinishing() const
+{
+    return _isDone;
+}
+
 bool LLBackgroundMusic::isPlaying() const
 {
     return _isPlaying;
@@ -218,21 +224,18 @@ void LLBackgroundMusic::setVolume(const float& volume)
     if (volume < 0.0) {
         value = 0.0;
     }
-    AudioQueueSetParameter(_queueRef, kAudioQueueParam_Volume, value);
+    _volume = value;
 }
 
-float LLBackgroundMusic::getVolume() const
+float LLBackgroundMusic::getVolume()
 {
-    float value = 0.0f;
-    AudioQueueGetParameter(_queueRef, kAudioQueueParam_Volume, &value);
-
-    return value;
+    return _volume;
 }
 
-void LLBackgroundMusic::setOnExitCallback(const std::function<void ()>& func)
-{
-    callbackFunc = func;
-}
+//void LLBackgroundMusic::setOnExitCallback(const std::function<void ()>& func)
+//{
+//    callbackFunc = func;
+//}
 
 SInt64 LLBackgroundMusic::getCurrentPosition() const
 {

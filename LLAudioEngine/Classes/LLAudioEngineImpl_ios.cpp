@@ -13,6 +13,7 @@
 
 LLAudioEngineImpl::LLAudioEngineImpl()
 {
+    _effectBuffer.reserve(3);
     std::thread th(&LLAudioEngineImpl::cleanup, this);
     th.detach();
 }
@@ -20,12 +21,7 @@ LLAudioEngineImpl::LLAudioEngineImpl()
 LLAudioEngineImpl::~LLAudioEngineImpl()
 {
     if(_music != nullptr) _music.reset();
-    for (auto effect : _effectBuffer)
-    {
-        effect->stop();
-        delete effect;
-        _effectBuffer.remove(effect);
-    }
+    std::vector<LLSoundEffect*>().swap(_effectBuffer);
 }
 
 void LLAudioEngineImpl::playBackgroundMusic(const std::string& fileName, bool repeat)
@@ -82,18 +78,19 @@ bool LLAudioEngineImpl::isBackgroundMusicPlaying() const
 
 void LLAudioEngineImpl::setBackgroundMusicVolume(const float& volume)
 {
-    _music->setVolume(volume);
+    LLBackgroundMusic::setVolume(volume);
 }
 
 float LLAudioEngineImpl::getBackgroundMusicVolume() const
 {
-    return _music->getVolume();
+    return LLBackgroundMusic::getVolume();
 }
 
 void LLAudioEngineImpl::setBackgroundExitCallback(const std::function<void(void)>& func)
 {
-    if(_music == nullptr) return;
-    _music->setOnExitCallback(func);
+    callbackFunc = func;
+    //if(_music == nullptr) return;
+    //_music->setOnExitCallback(func);
 }
 
 void LLAudioEngineImpl::playEffect(const std::string& fileName)
@@ -163,7 +160,12 @@ void LLAudioEngineImpl::cleanup()
             it++;
         }
         
-        // 50ミリ秒に一回クリーンアップを実行する
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        if (_music != nullptr && _music->isFinishing() && callbackFunc != nullptr)
+        {
+            callbackFunc();
+            callbackFunc = nullptr;
+        }
+        // 10ミリ秒に一回クリーンアップを実行する
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }

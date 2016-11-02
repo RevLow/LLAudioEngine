@@ -19,7 +19,7 @@ OSStatus renderProc(void* inRefCon,
                     UInt32 inNumberFrames,
                     AudioBufferList* ioData)
 {
-    LLSoundEffect* soundEffect = reinterpret_cast<LLSoundEffect*>(inRefCon);
+    LLSoundEffect* soundEffect = static_cast<LLSoundEffect*>(inRefCon);
     
     //モノラルとステレオの判定
     int indexR = (soundEffect->_data.numberOfChannels == 2) ? 1 : 0;

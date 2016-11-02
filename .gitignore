@@ -41,3 +41,7 @@ Pods
 # Macが勝手に作る
 .DS_Stored
 
+# Frameworkフォルダを除外
+Framework
+Framework/*
+
