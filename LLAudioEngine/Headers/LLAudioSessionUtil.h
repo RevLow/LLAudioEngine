@@ -9,6 +9,8 @@
 #ifndef __LLAudioEngine__LLAudioSessionUtil__
 #define __LLAudioEngine__LLAudioSessionUtil__
 
+#define IOS_HARDWARE_BUFFER_SIZE 128
+
 namespace LLAudioSessionUtil
 {
     void initialize();

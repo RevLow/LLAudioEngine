@@ -37,9 +37,14 @@ public:
     void preloadEffect(const std::string& fileName);
     void unloadEffect(const std::string& fileName);
     void unloadAllEffect();
-private:
     void cleanup();
-    std::vector<LLSoundEffect*> _effectBuffer;
+    LLSoundEffect* begin;
+    LLSoundEffect* end;
+private:
+    using LLSoundEffectPtr=std::unique_ptr<LLSoundEffect>;
+    //std::vector<LLSoundEffectPtr> _effectBuffer;
+    //std::array<LLSoundEffectPtr, 10> _effectBuffer;
+    std::mutex mtx;
     std::unique_ptr<LLBackgroundMusic> _music;
     std::function<void(void)> callbackFunc;
 };

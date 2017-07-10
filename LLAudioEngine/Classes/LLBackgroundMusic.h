@@ -29,8 +29,10 @@ public:
     bool getLoop() const;
     bool isFinishing() const;
     bool isPlaying() const;
+    void setFinishCallback(const std::function<void(void)>& callFunc){finishCallback = callFunc;}
     static void setVolume(const float& volume);
     static float getVolume();
+
 private:
     SInt64 getCurrentPosition() const;
     void setCurrentPosition(SInt64 frame);
@@ -50,6 +52,7 @@ private:
     UInt32 _packetReadCount; // 1バッファに何パケット使うか
     SInt64 _startingPacketCount;
     SInt64 _frameOffset;
+    std::function<void(void)> finishCallback;
     static float _volume;
 };
 

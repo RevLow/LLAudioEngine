@@ -127,3 +127,9 @@ void LLAudioEngine::unloadAllEffect()
 {
     pImpl->unloadAllEffect();
 }
+
+void LLAudioEngine::soundEffectCleanUp()
+{
+    pImpl->cleanup();
+}
+

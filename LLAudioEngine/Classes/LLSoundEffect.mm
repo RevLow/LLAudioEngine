@@ -64,7 +64,9 @@ OSStatus renderProc(void* inRefCon,
 
 LLSoundEffect::LLSoundEffect(const std::string& filePath) :
 _playing(false),
-_currentFrame(0)
+_currentFrame(0),
+next(nullptr),
+prev(nullptr)
 {
     _data = LLSoundCache::getInstance()->getFileCache(filePath);
     prepareAudioUnit();
@@ -77,6 +79,7 @@ LLSoundEffect::~LLSoundEffect()
     }
     AudioUnitUninitialize(_outputUnit);
     AudioComponentInstanceDispose(_outputUnit);
+
 }
 
 void LLSoundEffect::play()

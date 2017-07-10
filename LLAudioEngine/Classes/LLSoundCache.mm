@@ -70,13 +70,16 @@ void LLSoundCache::loadMem(const std::string& fileName)
     }
     
     ExtAudioFileRef audioRef;
-    NSString* nsFilePath = [[NSString alloc] initWithCString:fileName.c_str() encoding:nil];
+    NSString* nsFilePath = [NSString stringWithCString:fileName.c_str() encoding:NSUTF8StringEncoding];
     CFURLRef urlFilePath = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)nsFilePath, kCFURLPOSIXPathStyle, false);
     SoundEffectData data;
 
     OSStatus result = ExtAudioFileOpenURL(urlFilePath, &audioRef);
     ll_assert_arg(result==0, "Audio File Open Error \"%s\"", fileName.c_str());
     
+    // urlFilePathを解放
+    CFRelease(urlFilePath);
+
     //ファイルデータフォーマットを取得
     AudioStreamBasicDescription asbd;
     UInt32 propSize = sizeof(asbd);

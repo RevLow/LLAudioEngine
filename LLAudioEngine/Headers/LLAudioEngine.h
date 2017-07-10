@@ -34,6 +34,7 @@ public:
     void preloadEffect(const std::string& fileName);
     void unloadEffect(const std::string& fileName);
     void unloadAllEffect();
+    void soundEffectCleanUp();
     const LLAudioEngine& operator=(const LLAudioEngine&) = delete;
     LLAudioEngine(const LLAudioEngine&) = delete;
 private:

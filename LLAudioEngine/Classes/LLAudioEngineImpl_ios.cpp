@@ -11,31 +11,24 @@
 #include "LLSoundEffect.h"
 #include "LLBackgroundMusic.h"
 
-LLAudioEngineImpl::LLAudioEngineImpl()
+LLAudioEngineImpl::LLAudioEngineImpl() : begin(nullptr), end(nullptr)
 {
-    _effectBuffer.reserve(3);
-    std::thread th(&LLAudioEngineImpl::cleanup, this);
-    th.detach();
 }
 
 LLAudioEngineImpl::~LLAudioEngineImpl()
 {
     if(_music != nullptr) _music.reset();
-    std::vector<LLSoundEffect*>().swap(_effectBuffer);
+    //std::array<LLSoundEffectPtr, 10>().swap(_effectBuffer);
 }
 
 void LLAudioEngineImpl::playBackgroundMusic(const std::string& fileName, bool repeat)
 {
-    std::unique_ptr<LLBackgroundMusic> ptr(new LLBackgroundMusic(fileName));
     if(_music != nullptr)
     {
         _music->stop();
-        _music.swap(ptr);
     }
-    else
-    {
-        _music = std::move(ptr);
-    }
+    
+    _music.reset(new LLBackgroundMusic(fileName));
     _music->setLoop(repeat);
     _music->play();
 }
@@ -88,35 +81,52 @@ float LLAudioEngineImpl::getBackgroundMusicVolume() const
 
 void LLAudioEngineImpl::setBackgroundExitCallback(const std::function<void(void)>& func)
 {
-    callbackFunc = func;
-    //if(_music == nullptr) return;
-    //_music->setOnExitCallback(func);
+    //callbackFunc = func;
+    if(_music == nullptr) return;
+    _music->setFinishCallback(func);
+}
+
+void EffectDeleter(LLSoundEffect* p)
+{
+    delete p;
 }
 
 void LLAudioEngineImpl::playEffect(const std::string& fileName)
 {
-    LLSoundEffect* effect = new LLSoundEffect(fileName);
-    if (effect != nullptr)
-    {
-        effect->play();
-        _effectBuffer.push_back(effect);
-    }
+    std::thread th([this, fileName](){
+        std::lock_guard<std::mutex> lock(mtx);
+        cleanup();
+        
+        if (begin == nullptr)
+        {
+            begin = new LLSoundEffect(fileName);
+            end = begin;
+            begin->play();
+            return;
+        }
+        
+        end->next = new LLSoundEffect(fileName);
+        end->next->prev = end;
+        end = end->next;
+        end->play();
+    });
+    th.detach();
 }
 
 void LLAudioEngineImpl::pauseAllEffect()
 {
-    for(auto effect : _effectBuffer)
-    {
-        effect->pause();
-    }
+//    for(auto effect : _effectBuffer)
+//    {
+//        effect->pause();
+//    }
 }
 
 void LLAudioEngineImpl::stopAllEffect()
 {
-    for(auto effect : _effectBuffer)
-    {
-        effect->stop();
-    }
+//    for(auto effect : _effectBuffer)
+//    {
+//        effect->stop();
+//    }
 }
 
 void LLAudioEngineImpl::setEffectVolume(const float& vol)
@@ -146,26 +156,39 @@ void LLAudioEngineImpl::unloadAllEffect()
 
 void LLAudioEngineImpl::cleanup()
 {
-    while (true)
+    LLSoundEffect* head = begin;
+
+    while (head != nullptr)
     {
-        for (auto it = _effectBuffer.begin(); it != _effectBuffer.end(); )
+        LLSoundEffect* next = head->next;
+        if(!head->isPlaying())
         {
-            if(!(*it)->isPlaying())
-            {
-                delete *it;
-                it = _effectBuffer.erase(it);
-                continue;
-            }
+            if(head->prev)
+                head->prev->next = head->next;
+            else
+                begin = head->next;
             
-            it++;
+            if(head->next)
+                head->next->prev = head->prev;
+            else
+                end = head->prev;
+            
+            delete head;
         }
-        
-        if (_music != nullptr && _music->isFinishing() && callbackFunc != nullptr)
-        {
-            callbackFunc();
-            callbackFunc = nullptr;
-        }
-        // 10ミリ秒に一回クリーンアップを実行する
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        head = next;
     }
+    
+
+    
+//    for (auto it = _effectBuffer.begin(); it != _effectBuffer.end(); )
+//    {
+//        if (!(*it)->isPlaying()) {
+//            delete *it;
+//            it = _effectBuffer.erase(it);
+//            continue;
+//        }
+//        it++;
+//    }
 }
+
+

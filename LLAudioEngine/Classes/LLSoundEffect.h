@@ -10,6 +10,7 @@
 #define __LLAudioEngine__LLSoundEffect__
 
 #include "LLAudio.h"
+#include "LLAudioEngineImpl_ios.h"
 
 class LLSoundEffect
 {
@@ -31,6 +32,8 @@ public:
     bool isPlaying() const;
     static void setVolume(const float& vol);
     static float getVolume();
+    LLSoundEffect* next;
+    LLSoundEffect* prev;
 private:
     void prepareAudioUnit();
     AudioUnit _outputUnit;

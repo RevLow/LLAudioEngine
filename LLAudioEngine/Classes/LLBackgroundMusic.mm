@@ -55,6 +55,10 @@ void outputCallback(void* inUserData, AudioQueueRef inAQ, AudioQueueBufferRef in
             //ループしないなら終了し、コールバックを呼び出す
             bgm->stop();
             bgm->_isDone = true;
+            if(bgm->finishCallback != nullptr)
+            {
+                bgm->finishCallback();
+            }
         }
     }
     
@@ -89,10 +93,10 @@ LLBackgroundMusic::~LLBackgroundMusic()
 void LLBackgroundMusic::openFile(const std::string &fileName)
 {
     // オーディオファイルのオープン
-    NSString* nsFilePath = [[NSString alloc] initWithCString:fileName.c_str() encoding:nil];
+    NSString* nsFilePath = [NSString stringWithCString:fileName.c_str() encoding:NSUTF8StringEncoding];
     CFURLRef urlFilePath = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)nsFilePath, kCFURLPOSIXPathStyle, false);
     OSStatus result = AudioFileOpenURL(urlFilePath, kAudioFileReadPermission, 0, &_data.audioId);
-    
+    CFRelease(urlFilePath);
     ll_assert_arg(result == 0, "Audio File cannot read. [%s]", fileName.c_str());
 }
 
@@ -133,7 +137,7 @@ void LLBackgroundMusic::prepareAudioBuffer()
     UInt32 propertySize = sizeof(maxPacketSize);
     AudioFileGetProperty(_data.audioId, kAudioFilePropertyPacketSizeUpperBound, &propertySize, &maxPacketSize);
     
-    _packetReadCount = (_data.audioFormat.mFormatID == kAudioFormatLinearPCM) ? 1024 : 1; //calcPacketCount(_data.audioFormat.mFramesPerPacket, 1024);
+    _packetReadCount = (_data.audioFormat.mFormatID == kAudioFormatLinearPCM) ? 1024 : calcPacketCount(_data.audioFormat.mFramesPerPacket, 1024);
     UInt32 bufferByteSize = _packetReadCount * maxPacketSize;
     
     // AudioQueueBufferの初期化
